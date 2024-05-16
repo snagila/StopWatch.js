@@ -1,6 +1,7 @@
 let minutes = 0;
 let seconds = 0;
 let tens = 00;
+let interval;
 let appendMinutes = document.querySelector("#minutes");
 let appendSeconds = document.querySelector("#seconds");
 let appendTens = document.querySelector("#mSeconds");
@@ -45,18 +46,17 @@ const startTimer = () => {
   }
 };
 
-// let start = startBtn.addEventListener("click", () => {
-//   interval = setInterval(startTimer, 10);
-// });
-// stopBtn.addEventListener("click", () => {
-//   console.log("hey");
-//   clearInterval(start);
-// });
-
-startBtn.onclick = (interval) => {
+startBtn.onclick = () => {
+  clearInterval(interval);
   interval = setInterval(startTimer, 10);
 };
 
 stopBtn.onclick = () => {
   clearInterval(interval);
+};
+resetBtn.onclick = () => {
+  clearInterval(interval);
+  appendTens.innerHTML = "00";
+  appendSeconds.innerHTML = "00";
+  appendMinutes.innerHTML = "00";
 };
